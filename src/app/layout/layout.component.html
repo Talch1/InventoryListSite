@@ -1,0 +1,136 @@
+<header>
+  <h1>Welcome to Inventory List</h1>
+</header>
+<section class="menu">
+  <div class="conteiner">
+    <div class="buttons">
+      <button (click)="openAddItem()" class="AddNewItemBtn">Add new item</button>
+      <button (click)="openDetails()" class="ReadItemDetailsBtn">Read item details</button>
+      <button (click)="openTake()" class="TakeItem">Take item </button>
+      <button (click)="openPut()" class="PutItem">Put item</button>
+      <button (click)="openWithdrawal()" class="WithdrawalBtn">Withdrawal quantity</button>
+      <button (click)="openDeposite()" class="DepositBtn">Deposit quantity</button>
+      <button (click)="openDelete()" class="DeleteItemBtn">Delete item</button>
+    </div>
+  </div>
+</section>
+<section class="add" *ngIf="openAddItemFlag">
+  <div class="conteiner">
+    <div class="color">
+      <div class="itemId">
+        <div>Please enter item id</div>
+        <input type="number" class="itemId" placeholder="item id" [(ngModel)]="this.item.id">
+      </div>
+
+      <div class="itemName">
+        <div>Please enter item name</div>
+        <input type="text" class="itemName" placeholder=" item name" [(ngModel)]="this.item.name">
+      </div>
+
+      <div class="itemAmount">
+        <div>Please enter item amount</div>
+        <input type="number" class="itemAmount" placeholder=" item amount" [(ngModel)]="this.item.amount">
+      </div>
+      <div class="itemCode">
+        <div>Please enter item inventory code</div>
+        <input type="number" class="ItemInventoryCode" placeholder=" item inventory code"
+          [(ngModel)]="this.item.inventoryCode">
+      </div>
+
+    </div>
+    <div class="addNewItem2">
+      <div class="itemCode">
+        <div>Please enter item description</div>
+        <input type="text" class="ItemDescription" placeholder=" item description" [(ngModel)]="this.description">
+      </div>
+      <button (click)="addNewItem()">Add item</button>
+    </div>
+  </div>
+</section>
+<section class="details" *ngIf="openDEtailsFlag">
+  <div class="conteiner">
+    <div class="color">
+      <div class="itemId">
+        <div>Please enter item id to read details</div>
+        <input type="number" class="itemId" placeholder="item id" [(ngModel)]="this.id">
+        <button (click)="readDetails()">Read details</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="withdrawal" *ngIf="openWithdrawalFlag">
+  <div class="conteiner">
+    <div class="color">
+      <div class="itemId">
+        <div>Please enter item id to see withdrawal quantity of a specific item from stock</div>
+        <input type="number" class="itemId" placeholder="item id" [(ngModel)]="this.id">
+        <button (click)="withdrawal()">Press to withdrawal quantity</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="deposite" *ngIf="openDepositeFlag">
+  <div class="conteiner">
+    <div class="color">
+      <div class="itemId">
+        <div>Please enter item id to see deposite quantity of a specific item from stock</div>
+        <input type="number" class="itemId" placeholder="item id" [(ngModel)]="this.id">
+        <button (click)="deposite()">Press to deposite quantity</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="delete" *ngIf="openDeleteFlag">
+  <div class="conteiner">
+    <div class="color">
+      <div class="itemId">
+        <div>If you want delete this item plaese enter item id</div>
+        <input type="number" class="itemId" placeholder="item id" [(ngModel)]="this.id">
+        <button (click)="deleteItem()">Press to deposite quantity</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="take" *ngIf="openTakeFlag">
+  <div class="conteiner">
+    <div class="color">
+      <div class="itemId">
+        <div>Please enter item id to take it</div>
+        <input type="number" class="itemId" placeholder="item id" [(ngModel)]="this.id">
+        <button (click)="takeItem()">Press to take</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="put" *ngIf="openPutFlag">
+  <div class="conteiner">
+    <div class="color">
+      <div class="itemId">
+        <div>Please enter item id to add it</div>
+        <input type="number" class="itemId" placeholder="item id" [(ngModel)]="this.id">
+        <button (click)="putItem()">Press to add</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="itemAdd" *ngIf="itemFlag">
+  <div class="colorRed"> Item Was Added</div>
+</section>
+<section class="showDescr" *ngIf="descrFalg">
+  <div class="colorRed"> {{description}}</div>
+</section>
+<section class="showAmount" *ngIf="amountFlag">
+  <div class="colorRed"> New Amount is {{amount}}</div>
+</section>
+<section class="showWithdrawal" *ngIf="withdrawalFlag">
+  <div class="colorRed"> Withdrawal quantity of a specific item from stock is {{numberOfwithdrawal}}</div>
+</section>
+<section class="showDeposite" *ngIf="depositeFlag">
+  <div class="colorRed"> Deposite quantity of a specific item from stock is {{numberOfwithdrawal}}</div>
+</section>
+<section class="showMessage" *ngIf="deleteFlag">
+  <div class="colorRed">{{message}}</div>
+</section>
